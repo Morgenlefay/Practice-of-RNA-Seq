@@ -1,4 +1,4 @@
-1.FastQC and MultiQC of Raw Data	
+--------####### FastQC and MultiQC of Raw Data	
 fastqc -f fastq RNA_seq/pCDH_1_1.fq.gz -o RNA_seq/FastQC_1	
 fastqc -f fastq RNA_seq/pCDH_1_2.fq.gz -o RNA_seq/FastQC_1	
 fastqc -f fastq RNA_seq/pCDH_2_1.fq.gz -o RNA_seq/FastQC_1	
@@ -21,7 +21,7 @@ fastqc -f fastq RNA_seq/sh8_2_1.fq.gz -o RNA_seq/FastQC_1
 fastqc -f fastq RNA_seq/sh8_2_2.fq.gz -o RNA_seq/FastQC_1
 multiqc RNA_seq/FastQC_1 -o RNA_seq/FastQC_1	
 
-2.Trim_Galore	
+--------####### Trim_Galore	
 trim_galore -q 25 --phred33 --length 20 -e 0.1 --stringency 3 --paired RNA_seq/pCDH_1_1.fq.gz RNA_seq/pCDH_1_2.fq.gz --gzip -o RNA_seq	
 trim_galore -q 25 --phred33 --length 20 -e 0.1 --stringency 3 --paired RNA_seq/pCDH_2_1.fq.gz RNA_seq/pCDH_2_2.fq.gz --gzip -o RNA_seq
 trim_galore -q 25 --phred33 --length 20 -e 0.1 --stringency 3 --paired RNA_seq/A315T_1_1.fq.gz RNA_seq/A315T_1_2.fq.gz --gzip -o RNA_seq	
@@ -33,7 +33,7 @@ trim_galore -q 25 --phred33 --length 20 -e 0.1 --stringency 3 --paired RNA_seq/s
 trim_galore -q 25 --phred33 --length 20 -e 0.1 --stringency 3 --paired RNA_seq/sh8_1_1.fq.gz RNA_seq/sh8_1_2.fq.gz --gzip -o RNA_seq	
 trim_galore -q 25 --phred33 --length 20 -e 0.1 --stringency 3 --paired RNA_seq/sh8_2_1.fq.gz RNA_seq/sh8_2_2.fq.gz --gzip -o RNA_seq
 
-3.FastQC and MultiQC of Clean Data	
+--------####### FastQC and MultiQC of Clean Data	
 fastqc -f fastq RNA_seq/pCDH_1_1_val_1.fq.gz -o RNA_seq/FastQC_2	
 fastqc -f fastq RNA_seq/pCDH_1_2_val_2.fq.gz -o RNA_seq/FastQC_2	
 fastqc -f fastq RNA_seq/pCDH_2_1_val_1.fq.gz -o RNA_seq/FastQC_2	
