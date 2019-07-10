@@ -10,3 +10,8 @@ conda install -c bioconda subread
 conda install -c bioconda htseq
 conda install -c bioconda stringtie 
 conda deactivate
+
+conda create -n python2 python=2
+conda activate python2
+conda install -c conda-forge numpy
+conda deactivate
