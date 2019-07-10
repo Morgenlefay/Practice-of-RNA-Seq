@@ -3,7 +3,7 @@ rm(list=ls())
 options(stringsAsFactors = F)
 library(DESeq2)
 
-###¹¹½¨±í´ï¾ØÕó
+###æ„å»ºè¡¨è¾¾çŸ©é˜µ
 Mydata <- read.table("A315T_OE_Matrix.txt", header=TRUE, sep = '\t')
 ENSEMBL <- gsub("\\.\\d*", "", Mydata$Geneid)
 row.names(Mydata) <- ENSEMBL
@@ -12,7 +12,7 @@ CountData <- CountData[ ,-5]
 condition <- factor(c("pCDH","pCDH","A315T","A315T"))
 colData <- data.frame(row.names=colnames(CountData), condition)
 
-###DEseq±ê×¼»¯dds
+###DEseqæ ‡å‡†åŒ–dds
 dds <- DESeqDataSetFromMatrix(countData=CountData, colData=colData, design=~condition)
 dds <- DESeq(dds)
 res <- results(dds)
@@ -25,7 +25,7 @@ with(res[topGene, ], {
   text(baseMean, log2FoldChange, topGene, pos=2, col="dodgerblue")
 })
 
-###ÌáÈ¡²îÒì·ÖÎö½á¹û
+###æå–å·®å¼‚åˆ†æç»“æœ
 res <- res[order(res$padj),]
 diff_gene_deseq2 <-subset(res,padj < 0.05 & (log2FoldChange > 1 | log2FoldChange < -1))
 diff_gene_deseq2 <- row.names(diff_gene_deseq2)
@@ -40,7 +40,7 @@ as.data.frame(up) -> up_gene
 write.csv(up_gene, file="Up_gene.csv",row.names = T)
 write.csv(down_gene, file="Down_gene.csv",row.names = T)
 
-###»ğÉ½Í¼-1
+###ç«å±±å›¾-1
 library(ggplot2)
 volcano_data <-  read.csv("DEG.csv",header = TRUE)
 loc_up <- intersect(which(volcano_data$padj<0.05),which(volcano_data$log2FoldChange>=1))
@@ -58,7 +58,7 @@ p <- p+geom_hline(yintercept=yline,lty=2,size=I(0.2),colour="grey11")
 p <- p+theme_bw()
 p
 
-###»ğÉ½Í¼-2
+###ç«å±±å›¾-2
 rm(list = ls())
 library(ggplot2)
 data <- read.csv("DEG.csv",header = TRUE)
@@ -77,7 +77,7 @@ p <- ggplot(data, aes(log2FoldChange, -log10(padj), col = color)) +
         axis.text = element_text(size = 14))
 p
 
-###»ğÉ½Í¼-3
+###ç«å±±å›¾-3
 rm(list = ls())
 library(EnhancedVolcano)
 data <- read.csv("DEG.csv",header = TRUE, row.names = 1)
@@ -105,7 +105,7 @@ EnhancedVolcano(data,
                 gridlines.major = FALSE,
                 gridlines.minor = FALSE)
 
-###¹¦ÄÜ¸»¼¯·ÖÎö
+###åŠŸèƒ½å¯Œé›†åˆ†æ
 library(clusterProfiler)
 library(DOSE)
 library(org.Hs.eg.db)
