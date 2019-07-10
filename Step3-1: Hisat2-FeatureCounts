@@ -36,6 +36,22 @@ paste RNA_seq/Count/pCDH_1.txt RNA_seq/Count/pCDH_2.txt RNA_seq/Count/A315T_1.tx
 paste RNA_seq/Count/Scrb_1.txt RNA_seq/Count/Scrb_2.txt RNA_seq/Count/sh2_1.txt RNA_seq/Count/sh2_2.txt | awk '{printf $1"\t";for(i=2;i<=NF;i=i+2)printf $i"\t";print $i}' > sh2_KD_Matrix.txt
 paste RNA_seq/Count/Scrb_1.txt RNA_seq/Count/Scrb_2.txt RNA_seq/Count/sh8_1.txt RNA_seq/Count/sh8_2.txt | awk '{printf $1"\t";for(i=2;i<=NF;i=i+2)printf $i"\t";print $i}' > sh8_KD_Matrix.txt
 
+--------####### Bam2Bed
+bedtools bamtobed -i RNA_seq/pCDH_1.bam  > RNA_seq/pCDH_1.bed
+bedtools bamtobed -i RNA_seq/pCDH_1.bam  > RNA_seq/pCDH_2.bed
+
+bedtools bamtobed -i RNA_seq/A315T_1.bam  > RNA_seq/A315T_1.bed
+bedtools bamtobed -i RNA_seq/A315T_2.bam  > RNA_seq/A315T_2.bed
+
+bedtools bamtobed -i RNA_seq/Scrb_1.bam  > RNA_seq/Scrb_1.bed
+bedtools bamtobed -i RNA_seq/Scrb_2.bam  > RNA_seq/Scrb_2.bed
+
+bedtools bamtobed -i RNA_seq/sh2_1.bam  > RNA_seq/sh2_1.bed
+bedtools bamtobed -i RNA_seq/sh2_2.bam  > RNA_seq/sh2_2.bed
+
+bedtools bamtobed -i RNA_seq/sh8_1.bam  > RNA_seq/sh8_1.bed
+bedtools bamtobed -i RNA_seq/sh8_2.bam  > RNA_seq/sh8_2.bed
+
 --------####### Bam2Bigwig
 chmod 775 bam2bigwig.sh
 ./bam2bigwig.sh RNA_seq/pCDH_1.bam
