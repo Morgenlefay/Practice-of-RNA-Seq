@@ -1,0 +1,7 @@
+--------####### RPKM Calculation
+conda activate python2
+python rpkmforgenes.py -i RNA_seq/pCDH_1.bed RNA_seq/pCDH_2.bed RNA_seq/A315T_1.bed RNA_seq/A315T_1.bed \
+-exonnorm -readcount -fulltranscript -a Reference/Bed/hg19_UCSC_knownGene.bed \
+-p 4 -sortpos -o A315T_OE_RPKM.txt
+
+
