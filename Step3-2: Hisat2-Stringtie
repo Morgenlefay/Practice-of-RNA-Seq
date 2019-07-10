@@ -16,5 +16,9 @@ stringtie RNA_seq/pCDH_1.bam -l pCDH_1 -p 8 -G Reference/GTF/gencode.v19.annotat
 stringtie RNA_seq/pCDH_2.bam -l pCDH_2 -p 8 -G Reference/GTF/gencode.v19.annotation.gtf -o RNA_seq/Assembly/pCDH_2.gtf
 stringtie RNA_seq/A315T_1.bam -l A315T_1 -p 8 -G Reference/GTF/gencode.v19.annotation.gtf -o RNA_seq/Assembly/A315T_1.gtf
 stringtie RNA_seq/A315T_2.bam -l A315T_2 -p 8 -G Reference/GTF/gencode.v19.annotation.gtf -o RNA_seq/Assembly/A315T_2.gtf
-
-
+stringtie RNA_seq/Scrb_1.bam -l Scrb_1 -p 8 -G Reference/GTF/gencode.v19.annotation.gtf -o RNA_seq/Assembly/Scrb_1.gtf
+stringtie RNA_seq/Scrb_2.bam -l Scrb_2 -p 8 -G Reference/GTF/gencode.v19.annotation.gtf -o RNA_seq/Assembly/Scrb_2.gtf
+stringtie RNA_seq/sh2_1.bam -l sh2_1 -p 8 -G Reference/GTF/gencode.v19.annotation.gtf -o RNA_seq/Assembly/sh2_1.gtf
+stringtie RNA_seq/sh2_2.bam -l sh2_2 -p 8 -G Reference/GTF/gencode.v19.annotation.gtf -o RNA_seq/Assembly/sh2_2.gtf
+stringtie RNA_seq/sh8_1.bam -l sh8_1 -p 8 -G Reference/GTF/gencode.v19.annotation.gtf -o RNA_seq/Assembly/sh8_1.gtf
+stringtie RNA_seq/sh8_2.bam -l sh8_2 -p 8 -G Reference/GTF/gencode.v19.annotation.gtf -o RNA_seq/Assembly/sh8_2.gtf
