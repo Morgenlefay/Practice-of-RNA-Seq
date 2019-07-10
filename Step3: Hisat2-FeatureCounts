@@ -35,3 +35,14 @@ cut -f 1,7 sh8_2.txt |grep -v '^#' >RNA_seq/Count/sh8_2.txt
 paste RNA_seq/Count/pCDH_1.txt RNA_seq/Count/pCDH_2.txt RNA_seq/Count/A315T_1.txt RNA_seq/Count/A315T_2.txt | awk '{printf $1"\t";for(i=2;i<=NF;i=i+2)printf $i"\t";print $i}' > A315T_OE_Matrix.txt
 paste RNA_seq/Count/Scrb_1.txt RNA_seq/Count/Scrb_2.txt RNA_seq/Count/sh2_1.txt RNA_seq/Count/sh2_2.txt | awk '{printf $1"\t";for(i=2;i<=NF;i=i+2)printf $i"\t";print $i}' > sh2_KD_Matrix.txt
 paste RNA_seq/Count/Scrb_1.txt RNA_seq/Count/Scrb_2.txt RNA_seq/Count/sh8_1.txt RNA_seq/Count/sh8_2.txt | awk '{printf $1"\t";for(i=2;i<=NF;i=i+2)printf $i"\t";print $i}' > sh8_KD_Matrix.txt
+
+--------####### Bam2Bigwig
+chmod 775 bam2bigwig.sh
+./bam2bigwig.sh RNA_seq/pCDH_1.bam
+./bam2bigwig.sh RNA_seq/pCDH_2.bam
+./bam2bigwig.sh RNA_seq/A315T_1.bam
+./bam2bigwig.sh RNA_seq/A315T_2.bam
+
+
+
+
