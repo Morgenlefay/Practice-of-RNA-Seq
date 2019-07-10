@@ -42,7 +42,11 @@ chmod 775 bam2bigwig.sh
 ./bam2bigwig.sh RNA_seq/pCDH_2.bam
 ./bam2bigwig.sh RNA_seq/A315T_1.bam
 ./bam2bigwig.sh RNA_seq/A315T_2.bam
-
-
+./bam2bigwig.sh RNA_seq/Scrb_1.bam
+./bam2bigwig.sh RNA_seq/Scrb_2.bam
+./bam2bigwig.sh RNA_seq/sh2_1.bam
+./bam2bigwig.sh RNA_seq/sh2_2.bam
+./bam2bigwig.sh RNA_seq/sh8_1.bam
+./bam2bigwig.sh RNA_seq/sh8_2.bam
 
 
