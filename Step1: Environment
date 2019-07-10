@@ -8,7 +8,8 @@ conda install -c bioconda samtools
 conda install -c bioconda bedtools 
 conda install -c bioconda subread 
 conda install -c bioconda htseq
-conda install -c bioconda stringtie 
+conda install -c bioconda stringtie
+conda install -c bioconda gffcompare 
 conda deactivate
 
 conda create -n python2 python=2
