@@ -1,0 +1,3 @@
+--------####### RPKM Calculation
+conda activate python2
+python rpkmforgenes.py -i RNA_seq/pCDH_1.bed -readcount -fulltranscript -a Reference/refGene/hg19_refGene.txt -p 4 -o pCDH_1_RPKM.txt
