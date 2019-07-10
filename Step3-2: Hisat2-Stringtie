@@ -42,14 +42,15 @@ cat A315T_OE_merged.gtf | grep -v "^#" | awk '$3=="transcript" {print}' | wc -l
 gffcompare -r Reference/GTF/gencode.v19.annotation.gtf -G -o merged A315T_OE_merged.gtf
 cat merged.stats
 
-# estimate abundances of transcripts
-stringtie -e -B -p 8 -G stringtie_merged.gtf -o ballgown/pCDH_1/pCDH_1.gtf /home/zhoulab/RNA_seq/pCDH_1.bam
-stringtie -e -B -p 8 -G stringtie_merged.gtf -o ballgown/pCDH_2/pCDH_2.gtf /home/zhoulab/RNA_seq/pCDH_2.bam
-stringtie -e -B -p 8 -G stringtie_merged.gtf -o ballgown/A315T_1/A315T_1.gtf /home/zhoulab/RNA_seq/A315T_1.bam
-stringtie -e -B -p 8 -G stringtie_merged.gtf -o ballgown/A315T_2/A315T_2.gtf /home/zhoulab/RNA_seq/A315T_2.bam
+## estimate abundances of transcripts
+stringtie -e -B -p 8 -G A315T_OE_merged.gtf -o RNA_seq/Ballgown/pCDH_1/pCDH_1.gtf RNA_seq/pCDH_1.bam
+stringtie -e -B -p 8 -G A315T_OE_merged.gtf -o RNA_seq/Ballgown/pCDH_2/pCDH_2.gtf RNA_seq/pCDH_2.bam
+stringtie -e -B -p 8 -G A315T_OE_merged.gtf -o RNA_seq/Ballgown/A315T_1/A315T_1.gtf RNA_seq/A315T_1.bam
+stringtie -e -B -p 8 -G A315T_OE_merged.gtf -o RNA_seq/Ballgown/A315T_2/A315T_2.gtf RNA_seq/A315T_2.bam
+
 # Reads count
 wget http://ccb.jhu.edu/software/stringtie/dl/prepDE.py
-python2 ./prepDE.py - ballgown
+python2 ./prepDE.py - RNA_seq/Ballgown
 
 
 
