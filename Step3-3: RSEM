@@ -1,1 +1,4 @@
-
+--------####### Preparing Reference Sequences
+rsem-prepare-reference --gtf Reference/GTF/gencode.v19.annotation.gtf \
+		                   --bowtie2 \
+                         Reference/Fasta/hg19.fa Ref/human_gencode
