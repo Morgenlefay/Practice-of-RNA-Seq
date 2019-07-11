@@ -5,6 +5,7 @@ conda install -c bioconda multiqc
 conda install -c bioconda trim-galore
 conda install -c bioconda hisat2
 conda install -c bioconda bowtie2
+conda install -c bioconda rseqc
 conda install -c bioconda samtools
 conda install -c bioconda bedtools 
 conda install -c bioconda subread 
