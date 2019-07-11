@@ -2,3 +2,11 @@
 rsem-prepare-reference --gtf Reference/GTF/gencode.v19.annotation.gtf \
 		                   --bowtie2 \
                          Reference/Fasta/hg19.fa Ref/human_gencode
+
+--------####### Calculating Expression Values
+rsem-calculate-expression --bowtie2 \
+                          --paired-end \
+			  RNA_seq/pCDH_1_1_val_1.fq.gz \
+			  RNA_seq/pCDH_1_2_val_2.fq.gz \
+			  -p 8 Ref/human_gencode pCDH_1
+                        
