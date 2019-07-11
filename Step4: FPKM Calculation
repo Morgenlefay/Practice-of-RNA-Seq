@@ -1,0 +1,23 @@
+----------####### Samtools
+samtools index RNA_seq/pCDH_1.bam
+samtools index RNA_seq/pCDH_2.bam
+samtools index RNA_seq/A315T_1.bam
+samtools index RNA_seq/A315T_2.bam
+samtools index RNA_seq/Scrb_1.bam
+samtools index RNA_seq/Scrb_2.bam
+samtools index RNA_seq/sh2_1.bam
+samtools index RNA_seq/sh2_2.bam
+samtools index RNA_seq/sh8_1.bam
+samtools index RNA_seq/sh8_2.bam
+
+----------####### RSeQC
+FPKM_count.py -i RNA_seq/pCDH_1.bam -r Reference/Bed/hg19_ensGene.bed -e -q 25 -o RNA_seq/FPKM/pCDH_1
+FPKM_count.py -i RNA_seq/pCDH_2.bam -r Reference/Bed/hg19_ensGene.bed -e -q 25 -o RNA_seq/FPKM/pCDH_2
+FPKM_count.py -i RNA_seq/A315T_1.bam -r Reference/Bed/hg19_ensGene.bed -e -q 25 -o RNA_seq/FPKM/A315T_1
+FPKM_count.py -i RNA_seq/A315T_2.bam -r Reference/Bed/hg19_ensGene.bed -e -q 25 -o RNA_seq/FPKM/A315T_2
+FPKM_count.py -i RNA_seq/Scrb_1.bam -r Reference/Bed/hg19_ensGene.bed -e -q 25 -o RNA_seq/FPKM/Scrb_1
+FPKM_count.py -i RNA_seq/Scrb_2.bam -r Reference/Bed/hg19_ensGene.bed -e -q 25 -o RNA_seq/FPKM/Scrb_2
+FPKM_count.py -i RNA_seq/sh2_1.bam -r Reference/Bed/hg19_ensGene.bed -e -q 25 -o RNA_seq/FPKM/sh2_1
+FPKM_count.py -i RNA_seq/sh2_2.bam -r Reference/Bed/hg19_ensGene.bed -e -q 25 -o RNA_seq/FPKM/sh2_2
+FPKM_count.py -i RNA_seq/sh8_1.bam -r Reference/Bed/hg19_ensGene.bed -e -q 25 -o RNA_seq/FPKM/sh8_1
+FPKM_count.py -i RNA_seq/sh8_2.bam -r Reference/Bed/hg19_ensGene.bed -e -q 25 -o RNA_seq/FPKM/sh8_2
