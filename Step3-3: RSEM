@@ -10,3 +10,24 @@ rsem-calculate-expression --bowtie2 \
 			  RNA_seq/pCDH_1_2_val_2.fq.gz \
 			  -p 8 Ref/human_gencode pCDH_1
                         
+rsem-calculate-expression --bowtie2 \
+                          --paired-end \
+			  RNA_seq/pCDH_2_1_val_1.fq.gz \
+			  RNA_seq/pCDH_2_2_val_2.fq.gz \
+			  -p 8 Ref/human_gencode pCDH_2
+
+rsem-calculate-expression --bowtie2 \
+                          --paired-end \
+			  RNA_seq/A315T_1_1_val_1.fq.gz \
+			  RNA_seq/A315T_1_2_val_2.fq.gz \
+			  -p 8 Ref/human_gencode A315T_1
+
+rsem-calculate-expression --bowtie2 \
+                          --paired-end \
+			  RNA_seq/A315T_2_1_val_1.fq.gz \
+			  RNA_seq/A315T_2_2_val_2.fq.gz \
+			  -p 8 Ref/human_gencode A315T_2
+
+
+
+
