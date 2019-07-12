@@ -15,9 +15,3 @@ conda install -c bioconda gffcompare
 conda install -c bioconda rsem 
 conda deactivate
 
-conda create -n python2 python=2
-conda activate python2
-conda install -c conda-forge numpy
-conda install -c bioconda pysam
-conda install -c conda-forge pandas 
-conda deactivate
