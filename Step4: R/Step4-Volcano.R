@@ -1,47 +1,11 @@
 ###--------------------------
 rm(list=ls())
 options(stringsAsFactors = F)
-library(DESeq2)
-
-###构建表达矩阵
-Mydata <- read.table("A315T.txt", header=TRUE, sep = '\t')
-ENSEMBL <- gsub("\\.\\d*", "", Mydata$Geneid)
-row.names(Mydata) <- ENSEMBL
-CountData <- Mydata[ ,-1:-6]
-condition <- factor(c("OE","OE","Ctrl","Ctrl"))
-colData <- data.frame(row.names=colnames(CountData), condition)
-
-###DEseq标准化dds
-dds <- DESeqDataSetFromMatrix(countData=CountData, colData=colData, design=~condition)
-dds <- DESeq(dds)
-res <- results(dds)
-mcols(res, use.names = TRUE)
-summary(res)
-plotMA(res, ylim = c(-6,6))
-topGene <- rownames(res)[which.min(res$padj)]
-with(res[topGene, ], {
-  points(baseMean, log2FoldChange, col="dodgerblue", cex=2, lwd=2)
-  text(baseMean, log2FoldChange, topGene, pos=2, col="dodgerblue")
-})
-
-###提取差异分析结果
-res <- res[order(res$padj),]
-diff_gene_deseq2 <-subset(res,padj < 0.05 & (log2FoldChange > 1 | log2FoldChange < -1))
-diff_gene_deseq2 <- row.names(diff_gene_deseq2)
-resdata <-  merge(as.data.frame(res),as.data.frame(counts(dds,normalize=TRUE)),by="row.names",sort=FALSE)
-write.csv(resdata,file= "DEG.csv",row.names = F)
-
-subset(res,padj < 0.01) -> diff
-subset(diff,log2FoldChange < -1) -> down
-subset(diff,log2FoldChange > 1) -> up
-as.data.frame(down) -> down_gene
-as.data.frame(up) -> up_gene
-write.csv(up_gene, file="Up_gene.csv",row.names = T)
-write.csv(down_gene, file="Down_gene.csv",row.names = T)
 
 ###火山图-1
+rm(list=ls())
 library(ggplot2)
-volcano_data <-  read.csv("DEG.csv",header = TRUE)
+volcano_data <-  read.csv("A315T_DEG.csv",header = TRUE)
 loc_up <- intersect(which(volcano_data$padj<0.05),which(volcano_data$log2FoldChange>=1))
 loc_down <- intersect(which(volcano_data$padj<0.05),which(volcano_data$log2FoldChange<=(-1)))
 significant <- rep("Normal",times=nrow(volcano_data))
@@ -56,10 +20,11 @@ yline=-log(0.05,10)
 p <- p+geom_hline(yintercept=yline,lty=2,size=I(0.2),colour="grey11")
 p <- p+theme_bw()
 p
+
 #火山图-2
 rm(list = ls())
 library(ggplot2)
-data <- read.csv("DEG.csv",header = TRUE)
+data <- read.csv("A315T_DEG.csv",header = TRUE)
 data$color <- ifelse(data$padj<0.05 & abs(data$log2FoldChange)>= 1,ifelse(data$log2FoldChange > 1,'red','blue'),'black')
 color <- c(red = "red",black = "black",blue = "blue")
 p <- ggplot(data, aes(log2FoldChange, -log10(padj), col = color)) +
@@ -75,3 +40,30 @@ p <- ggplot(data, aes(log2FoldChange, -log10(padj), col = color)) +
         axis.text = element_text(size = 14))
 p
 
+###火山图-3
+rm(list = ls())
+library(EnhancedVolcano)
+data <- read.csv("A315T_DEG.csv",header = TRUE, row.names = 1)
+EnhancedVolcano(data,
+                lab = rownames(data),
+                x = "log2FoldChange",
+                y = "padj",
+                selectLab = c("ENSG00000182752","ENSG00000137558"),
+                xlab = bquote(~Log[2]~ "fold change"),
+                ylab = bquote(~-Log[10]~adjusted~italic(P)),
+                pCutoff = 0.00000000000000001,
+                FCcutoff = 2.0,
+                xlim = c(-8,8),
+                transcriptLabSize = 3.0,
+                colAlpha = 1,
+                legend=c("NS","Log2 FC","Adjusted p-value",
+                         "Adjusted p-value & Log2 FC"),
+                legendPosition = "bottom",
+                legendLabSize = 10,
+                legendIconSize = 3.0,
+                DrawConnectors = FALSE,
+                border = "full",
+                borderWidth = 1.5,
+                borderColour = "black",
+                gridlines.major = FALSE,
+                gridlines.minor = FALSE)
