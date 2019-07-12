@@ -11,4 +11,4 @@ CountData <- CountData[ ,-5]
 condition <- factor(c("pCDH","pCDH","A315T","A315T"))
 colData <- data.frame(row.names=colnames(CountData), condition)
 
-save(colData,CountData,file = 'input.Rdata')
+save(colData,CountData,file = 'A315T_OE.Rdata')
