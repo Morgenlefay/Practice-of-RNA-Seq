@@ -1,1 +1,8 @@
+----------###### Build index
+subread-buildindex -o hg19_subread.index Reference/Fasta/hg19.fa
 
+----------###### Alignment
+subread-align -T 8 -i Reference/index/hg19_subread/hg19_subread.index -r RNA_seq/pCDH_1_1_val_1.fq.gz -R RNA_seq/pCDH_1_2_val_2.fq.gz -t 0 -o RNA_seq/pCDH_1.bam
+subread-align -T 8 -i Reference/index/hg19_subread/hg19_subread.index -r RNA_seq/pCDH_2_1_val_1.fq.gz -R RNA_seq/pCDH_2_2_val_2.fq.gz -t 0 -o RNA_seq/pCDH_2.bam
+subread-align -T 8 -i Reference/index/hg19_subread/hg19_subread.index -r RNA_seq/A315T_1_1_val_1.fq.gz -R RNA_seq/A315T_1_2_val_2.fq.gz -t 0 -o RNA_seq/A315T_1.bam
+subread-align -T 8 -i Reference/index/hg19_subread/hg19_subread.index -r RNA_seq/A315T_2_1_val_1.fq.gz -R RNA_seq/A315T_2_2_val_2.fq.gz -t 0 -o RNA_seq/A315T_2.bam
