@@ -2,7 +2,7 @@
 rm(list=ls())
 options(stringsAsFactors = F)
 
-###构建表达矩阵
+###鏋勫缓琛ㄨ揪鐭╅樀
 Mydata <- read.table("A315T_OE_Matrix.txt", header=TRUE, sep = '\t')
 ENSEMBL <- gsub("\\.\\d*", "", Mydata$Geneid)
 row.names(Mydata) <- ENSEMBL
