@@ -6,3 +6,9 @@ subread-align -T 8 -i Reference/index/hg19_subread/hg19_subread.index -r RNA_seq
 subread-align -T 8 -i Reference/index/hg19_subread/hg19_subread.index -r RNA_seq/pCDH_2_1_val_1.fq.gz -R RNA_seq/pCDH_2_2_val_2.fq.gz -t 0 -o RNA_seq/pCDH_2.bam
 subread-align -T 8 -i Reference/index/hg19_subread/hg19_subread.index -r RNA_seq/A315T_1_1_val_1.fq.gz -R RNA_seq/A315T_1_2_val_2.fq.gz -t 0 -o RNA_seq/A315T_1.bam
 subread-align -T 8 -i Reference/index/hg19_subread/hg19_subread.index -r RNA_seq/A315T_2_1_val_1.fq.gz -R RNA_seq/A315T_2_2_val_2.fq.gz -t 0 -o RNA_seq/A315T_2.bam
+subread-align -T 8 -i Reference/index/hg19_subread/hg19_subread.index -r RNA_seq/Scrb_1_1_val_1.fq.gz -R RNA_seq/Scrb_1_2_val_2.fq.gz -t 0 -o RNA_seq/Scrb_1.bam
+subread-align -T 8 -i Reference/index/hg19_subread/hg19_subread.index -r RNA_seq/Scrb_2_1_val_1.fq.gz -R RNA_seq/Scrb_2_2_val_2.fq.gz -t 0 -o RNA_seq/Scrb_2.bam
+subread-align -T 8 -i Reference/index/hg19_subread/hg19_subread.index -r RNA_seq/sh2_1_1_val_1.fq.gz -R RNA_seq/sh2_1_2_val_2.fq.gz -t 0 -o RNA_seq/sh2_1.bam
+subread-align -T 8 -i Reference/index/hg19_subread/hg19_subread.index -r RNA_seq/sh2_2_1_val_1.fq.gz -R RNA_seq/sh2_2_2_val_2.fq.gz -t 0 -o RNA_seq/sh2_2.bam
+subread-align -T 8 -i Reference/index/hg19_subread/hg19_subread.index -r RNA_seq/sh8_1_1_val_1.fq.gz -R RNA_seq/sh8_1_2_val_2.fq.gz -t 0 -o RNA_seq/sh8_1.bam
+subread-align -T 8 -i Reference/index/hg19_subread/hg19_subread.index -r RNA_seq/sh8_2_1_val_1.fq.gz -R RNA_seq/sh8_2_2_val_2.fq.gz -t 0 -o RNA_seq/sh8_2.bam
