@@ -28,6 +28,9 @@ rsem-calculate-expression --bowtie2 \
 			  RNA_seq/A315T_2_2_val_2.fq.gz \
 			  -p 8 Ref/human_gencode A315T_2
 
-
-
+ --------####### Differential Expression Analysis
+rsem-generate-data-matrix \
+pCDH_1.genes.results pCDH_2.genes.results \
+A315T_1.genes.results A315T_2.genes.results \
+> GeneMat.txt
 
