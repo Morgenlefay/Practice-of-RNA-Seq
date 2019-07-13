@@ -46,6 +46,18 @@ dotplot(kk)
 barplot(kk)
 browseKEGG(kk, 'hsa04974')
 
+### DO Analysis
+do<-gene.df$SYMBOL
+do <- enrichDO(gene = kegg,
+              ont = "DO",
+              pvalueCutoff = 0.01,
+              pAdjustMethod = "BH",
+              minGSSize = 1,
+              maxGSSize = 500,
+              qvalueCutoff = 0.05,
+              readable = TRUE)
+dotplot(do)
+barplot(do)
 
 
 
