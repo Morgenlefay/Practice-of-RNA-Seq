@@ -12,10 +12,8 @@ pheatmap::pheatmap(cor(CountData),annotation_col = tmp)
 
 rm(list=ls())
 options(stringsAsFactors = F)
-dat<-read.csv("A315T_DEG.csv")
-ENSEMBL <- dat$Row.names
-row.names(dat) <- ENSEMBL
-deg <- dat[ ,-1:-7]
+dat <- read.csv("A315T_DEG.csv",header = TRUE, row.names = 1)
+deg <- dat[ ,-1:-6]
 x=dat$log2FoldChange
 names(x)=rownames(deg)
 cg=c(names(head(sort(x),100)),
