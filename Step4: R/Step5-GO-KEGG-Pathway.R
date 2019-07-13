@@ -35,7 +35,16 @@ barplot(ego_mf,showCategory = 25,title="The GO_MF enrichment analysis of all DEG
 dotplot(ego_mf,showCategory = 25,title="The GO_MF enrichment analysis of all DEGs")
 plotGOgraph(ego_mf)
 
-
+### KEGG Analysis
+kegg<-gene.df$ENTREZID
+kk <- enrichKEGG(gene = kegg,
+                 organism = 'hsa',
+                 pvalueCutoff = 0.05,
+                 pAdjustMethod = "BH",
+                 qvalueCutoff = 0.05)
+dotplot(kk)
+barplot(kk)
+browseKEGG(kk, 'hsa04974')
 
 
 
