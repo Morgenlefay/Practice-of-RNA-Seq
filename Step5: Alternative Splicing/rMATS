@@ -8,8 +8,9 @@ python miniconda2/pkgs/rmats-4.0.2-py27hd8e4039_4/rMATS/rmats.py  \
 --gtf Reference/GTF/gencode.v19.annotation.gtf \
 --od RNA_seq/RMATS \
 -t paired \
---nthread 4 \
+--nthread 6 \
 --readLength 150 \
---cstat 0.1 \
+--cstat 0.0001 \
+--tstat 6 \
 --libType fr-unstranded
 
