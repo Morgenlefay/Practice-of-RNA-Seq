@@ -1,4 +1,6 @@
 conda create -n AS
 conda activate AS
-conda install -c bioconda rmats 
+conda install -c bioconda rmats
+conda install -c bioconda rmats2sashimiplot
 conda install -c davidaknowles r-leafcutter 
+
