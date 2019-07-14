@@ -1,2 +1,4 @@
 conda create -n AS
 conda activate AS
+conda install -c bioconda rmats 
+conda install -c davidaknowles r-leafcutter 
