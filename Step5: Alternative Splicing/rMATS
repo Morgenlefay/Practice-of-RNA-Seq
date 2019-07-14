@@ -1,0 +1,4 @@
+cat b1.txt:
+RNA_seq/pCDH_1.bam,RNA_seq/pCDH_2.bam 
+cat b2.txt:
+RNA_seq/A315T_1.bam,RNA_seq/A315T_2.bam 
