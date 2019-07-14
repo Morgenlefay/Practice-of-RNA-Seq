@@ -15,7 +15,7 @@ python miniconda2/pkgs/rmats-4.0.2-py27hd8e4039_4/rMATS/rmats.py  \
 --libType fr-unstranded
 
 ----------###### rmats2sashimiplot
-rmats2sashimiplot --b1 RNA_seq/pCDH_1.bam,RNA_seq/pCDH_2.bam --b2 RNA_seq/A315T_1.bam,RNA_seq/A315T_2.bam -c coordinate:annotaionFile --l1 SampleLabel1 --l2 SampleLabel2 --exon_s exonScale --intron_s intronScale -o outDir
+rmats2sashimiplot --b1 RNA_seq/pCDH_1.bam,RNA_seq/pCDH_2.bam --b2 RNA_seq/A315T_1.bam,RNA_seq/A315T_2.bam -c coordinate:annotaionFile --l1 pCDH --l2 A315T --exon_s exonScale --intron_s intronScale -o outDir
 
 
 
