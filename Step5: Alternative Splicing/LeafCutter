@@ -22,17 +22,15 @@ for bamfile in `ls RNA_seq/*.bam`; do
  done
 
 ---------###### Intron clustering
-python leafcutter/clustering/leafcutter_cluster.py -j A315T.txt -m 50 -o A315T 500000
+python leafcutter/clustering/leafcutter_cluster.py -j Alternative_Splicing.txt -m 50 -o AS 500000
 zcat A315T_perind_numers.counts.gz | more 
 
 ---------###### Differential splicing analysis.
-leafcutter/scripts/leafcutter_ds.R -i 2 -g 2 --num_threads 4 A315T_perind_numers.counts.gz groups_file.txt
+leafcutter/scripts/leafcutter_ds.R -i 2 -g 2 --num_threads 8 AS_perind_numers.counts.gz groups_file.txt
 
 
 ---------###### Generate the annotation files
 leafcutter/leafviz/gtf2leafcutter.pl -o gencode.v19 Reference/GTF/gencode.v19.annotation.gtf
 
-###Plot pdf differentially spliced clusters
-leafcutter/scripts/gtf_to_exons.R Reference/GTF/gencode.v19.annotation.gtf gencode.v19_exons.txt.gz
-
+---------###### Plot pdf differentially spliced clusters
 leafcutter/scripts/ds_plots.R -e leafcutter/leafcutter/data/gencode.v19_exons.txt.gz A315T_perind_numers.counts.gz groups_file.txt leafcutter_ds_cluster_significance.txt -f 0.05
