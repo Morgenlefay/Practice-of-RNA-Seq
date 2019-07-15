@@ -16,7 +16,7 @@ conda install -c bioconda igv
 for bamfile in `ls RNA_seq/*.bam`; do
      echo Converting $bamfile to $bamfile.junc
      sh leafcutter/scripts/bam2junc.sh $bamfile $bamfile.junc
-     echo $bamfile.junc >> A315T.txt
+     echo $bamfile.junc >> Alternative_Splicing.txt
  done
 
 ###Intron clustering
