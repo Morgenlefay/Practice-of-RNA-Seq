@@ -1,0 +1,20 @@
+###bam2junc
+git clone https://github.com/davidaknowles/leafcutter
+修改里面的一个脚本 scripts/bam2junc.sh 把软件路径增添进去(leafCutterDir='/home/zhoulab/leafcutter')
+
+for bamfile in `ls RNA_seq/*.bam`; do
+     echo Converting $bamfile to $bamfile.junc
+     sh leafcutter/scripts/bam2junc.sh $bamfile $bamfile.junc
+     echo $bamfile.junc >> test_juncfiles.txt
+ done
+
+
+###Intron clustering
+ls RNA_seq/*.junc >test_juncfiles.txt
+python leafcutter/clustering/leafcutter_cluster.py -j test_juncfiles.txt -m 50 -o testYRIvsEU -l 500000
+
+###Differential splicing analysis.
+leafcutter/scripts/leafcutter_ds.R --num_threads 4 RNA_seq/testYRIvsEU_perind_numers.counts.gz RNA_seq/groups_file.txt
+
+###Plot pdf differentially spliced clusters.
+leafcutter/scripts/ds_plots.R -e leafcutter/leafcutter/data/gencode19_exons.txt.gz RNA_seq/testYRIvsEU_perind_numers.counts.gz RNA_seq/groups_file.txt leafcutter_ds_cluster_significance.txt -f 0.05
