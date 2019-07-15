@@ -4,9 +4,10 @@ git clone https://github.com/davidaknowles/leafcutter
 
 ---------###### Installing the R package
 install.packages("devtools")
+library(devtools)
 devtools::install_github("davidaknowles/leafcutter/leafcutter")
 
----------###### Samtools
+---------###### Set Environment
 conda create -n leafcutter
 conda activate leafcutter
 conda install -c bioconda samtools 
