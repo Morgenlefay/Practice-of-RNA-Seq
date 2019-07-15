@@ -1,3 +1,6 @@
+conda create -n leafcutter
+conda activate leafcutter
+
 git clone https://github.com/davidaknowles/leafcutter
 修改里面的一个脚本 scripts/bam2junc.sh 把软件路径增添进去(leafCutterDir='/home/zhoulab/leafcutter')
 
