@@ -1,7 +1,7 @@
-###bam2junc
 git clone https://github.com/davidaknowles/leafcutter
 修改里面的一个脚本 scripts/bam2junc.sh 把软件路径增添进去(leafCutterDir='/home/zhoulab/leafcutter')
 
+###bam2junc
 conda activate RNAseq
 for bamfile in `ls RNA_seq/*.bam`; do
      echo Converting $bamfile to $bamfile.junc
