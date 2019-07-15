@@ -10,6 +10,7 @@ devtools::install_github("davidaknowles/leafcutter/leafcutter")
 conda create -n leafcutter
 conda activate leafcutter
 conda install -c bioconda samtools 
+conda install -c bioconda igv
 
 ###bam2junc
 for bamfile in `ls RNA_seq/*.bam`; do
