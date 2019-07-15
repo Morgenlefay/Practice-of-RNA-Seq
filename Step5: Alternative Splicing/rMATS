@@ -19,5 +19,19 @@ rmats2sashimiplot --b1 RNA_seq/pCDH_1.bam,RNA_seq/pCDH_2.bam --b2 RNA_seq/A315T_
                   -c chr3:+:106,957,539-107,047,811:gencode.v31lift37.annotation.gff3 \
                   --l1 pCDH --l2 A315T --exon_s 1 --intron_s 5 -o RNA_seq/Plot
 
+rmats2sashimiplot \
+--b1 RNA_seq/pCDH_1.bam,RNA_seq/pCDH_2.bam \
+--b2 RNA_seq/A315T_1.bam,RNA_seq/A315T_2.bam \
+--l1 pCDH \
+--l2 A315T \
+--exon_s 1 \
+--intron_s 5 \
+--min-counts 0 \
+-t SE \
+-e RNA_seq/RMATS/SE.MATS.JCEC.txt \
+-o RNA_seq/Plot
+
+
+
 chr2:+:10090000:10110000:./testData/ensGene.gff3
 
