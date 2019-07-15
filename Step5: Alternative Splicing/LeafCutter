@@ -8,6 +8,7 @@ devtools::install_github("davidaknowles/leafcutter/leafcutter")
 
 ---------###### Samtools
 conda create -n leafcutter
+conda activate leafcutter
 conda install -c bioconda samtools 
 
 ###bam2junc
