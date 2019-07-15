@@ -3,8 +3,15 @@ conda activate leafcutter
 conda install -c bioconda samtools
 conda install -c davidaknowles r-leafcutter
 
+---------###### LeafCutter Installation
 git clone https://github.com/davidaknowles/leafcutter
 修改里面的一个脚本 scripts/bam2junc.sh 把软件路径增添进去(leafCutterDir='/home/morgenlefay/leafcutter')
+
+---------###### Installing the R package
+install.packages("devtools")
+devtools::install_github("davidaknowles/leafcutter/leafcutter")
+
+
 
 ###bam2junc
 conda activate RNAseq
