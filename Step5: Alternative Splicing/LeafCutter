@@ -29,7 +29,7 @@ leafcutter/scripts/leafcutter_ds.R -i 2 -g 2 --num_threads 4 A315T_perind_numers
 
 
 ---------###### Generate the annotation files
-leafcutter/leafviz/gtf2leafcutter.pl -o encode.v19 Reference/GTF/gencode.v19.annotation.gtf
+leafcutter/leafviz/gtf2leafcutter.pl -o gencode.v19 Reference/GTF/gencode.v19.annotation.gtf
 
 ###Plot pdf differentially spliced clusters
 leafcutter/scripts/gtf_to_exons.R Reference/GTF/gencode.v19.annotation.gtf gencode.v19_exons.txt.gz
