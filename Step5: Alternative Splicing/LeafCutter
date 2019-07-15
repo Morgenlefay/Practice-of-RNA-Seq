@@ -12,7 +12,7 @@ for bamfile in `ls RNA_seq/*.bam`; do
 
 ###Intron clustering
 conda activate AS
-python leafcutter/clustering/leafcutter_cluster.py -j A315T.txt -m 50 -o RNA_seq -l 500000
+python leafcutter/clustering/leafcutter_cluster.py -j A315T.txt -m 50 -o A315T-l 500000
 
 ###Differential splicing analysis.
 leafcutter/scripts/leafcutter_ds.R --num_threads 4 RNA_seq/testYRIvsEU_perind_numers.counts.gz RNA_seq/groups_file.txt
