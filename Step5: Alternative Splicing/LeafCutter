@@ -5,7 +5,7 @@ git clone https://github.com/davidaknowles/leafcutter
 for bamfile in `ls RNA_seq/*.bam`; do
      echo Converting $bamfile to $bamfile.junc
      sh leafcutter/scripts/bam2junc.sh $bamfile $bamfile.junc
-     echo $bamfile.junc >> test_juncfiles.txt
+     echo $bamfile.junc >> A315T.txt
  done
 
 
