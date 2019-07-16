@@ -36,9 +36,7 @@ leafcutter/leafviz/gtf2leafcutter.pl -o gencode.v19 Reference/GTF/gencode.v19.an
 leafcutter/scripts/ds_plots.R -e leafcutter/leafcutter/data/gencode.v19_all_exons.txt.gz AS_perind_numers.counts.gz groups_file.txt leafcutter_ds_cluster_significance.txt -f 0.05
 
 ---------###### Prepare the LeafCutter differential splicing results for visualisation
-leafcutter/leafviz/prepare_results.R [options] AS_perind_numers.counts.gz leafcutter_ds_cluster_significance.txt leafcutter_ds_effect_sizes.txt annotation_code 
-
-
-
-
-
+leafcutter/leafviz/prepare_results.R --meta_data_file A315T_groups_file.txt \
+                                     --code A315T \
+                                       AS_perind_numers.counts.gz leafcutter_ds_cluster_significance.txt leafcutter_ds_effect_sizes.txt leafcutter/leafcutter/data/gencode.v19
+leafcutter/leafviz/run_leafviz.R leafviz.RData
