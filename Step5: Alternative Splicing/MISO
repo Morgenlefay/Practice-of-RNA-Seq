@@ -1,0 +1,3 @@
+conda create -n MISO
+conda activate MISO
+conda install -c bioconda misopy
