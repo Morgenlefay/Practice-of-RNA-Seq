@@ -23,7 +23,7 @@ diff_gene_deseq2 <-subset(res,padj < 0.05 & (log2FoldChange > 1 | log2FoldChange
 diff_gene_deseq2 <- row.names(diff_gene_deseq2)
 resdata <-  merge(as.data.frame(res),as.data.frame(counts(dds,normalize=TRUE)),by="row.names",sort=FALSE)
 write.csv(resdata,file= "A315T_DEG.csv",row.names = F)
-subset(res,padj < 0.01) -> diff
+subset(res,padj < 0.05) -> diff
 subset(diff,log2FoldChange < -1) -> down
 subset(diff,log2FoldChange > 1) -> up
 as.data.frame(down) -> down_gene
