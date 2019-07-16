@@ -9,7 +9,8 @@ rt3<-read.csv(file="sh8.csv")
 sh8 <- as.vector(rt3[,1])
 vn <- venn.diagram(list(A315T=A315T,sh2=sh2,sh8=sh8),filename='Venn.eps',
                    cat.col=c('red','green','blue'),
-                   fill=c(colors()[148], colors()[589], colors()[116]))
+                   col="transparent",
+                   fill=c("green","yellow","darkorchid1"))
 
 
 
