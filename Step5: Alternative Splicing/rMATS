@@ -1,3 +1,14 @@
+----------###### Set Environment
+conda create -n RMATS
+conda activate RMATS
+conda install -c bioconda rmats 
+conda install -c bioconda samtools 
+conda install -c bioconda pysam
+conda install -c conda-forge numpy
+conda install -c conda-forge scipy 
+
+
+
 ----------###### rMATS
 cat b1.txt:
 RNA_seq/pCDH_1.bam,RNA_seq/pCDH_2.bam 
