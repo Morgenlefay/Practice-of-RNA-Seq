@@ -17,15 +17,18 @@ python miniconda2/pkgs/suppa-2.3-py36_1/bin/multipleFieldSelection.py -i A315T_2
 
 -----------####### Event calculation
 python miniconda2/pkgs/suppa-2.3-py36_1/bin/suppa.py generateEvents \
-       -i Reference/GTF/Homo_sapiens.GRCh37.75.formatted.gtf -o ensembl_hg19.events -e SE SS MX RI FL -f ioe
+       -i Reference/Salmon/Homo_sapiens.GRCh37.75.formatted.gtf -o ensembl_hg19.events -e SE SS MX RI FL -f ioe
 awk '
     FNR==1 && NR!=1 { while (/^<header>/) getline; }
     1 {print}
 ' *.ioe > ensembl_hg19.events.ioe
 
+Rscript format_Ensembl_ids.R pCDH_1.txt
+
+
+
+
 python miniconda2/pkgs/suppa-2.3-py36_1/bin/suppa.py psiPerEvent -i ensembl_hg19.events.ioe -e pCDH_1.txt -o pCDH_1_events
 
 
-
-python miniconda2/pkgs/suppa-2.3-py36_1/bin/suppa.py 
 
