@@ -6,29 +6,24 @@ conda install -c bioconda salmon
 
 -----------####### Transcript quantification
 salmon index --gencode -t Reference/Salmon/hg19_EnsenmblGenes_sequence_ensenmbl.fasta -i Ensembl_hg19_salmon_index
+
 salmon quant -i Ensembl_hg19_salmon_index -l IU -1 RNA_seq/pCDH_1_1.fq.gz -2 RNA_seq/pCDH_1_2.fq.gz --validateMappings -o pCDH_1
 salmon quant -i Ensembl_hg19_salmon_index -l IU -1 RNA_seq/pCDH_2_1.fq.gz -2 RNA_seq/pCDH_2_2.fq.gz --validateMappings -o pCDH_2
 salmon quant -i Ensembl_hg19_salmon_index -l IU -1 RNA_seq/A315T_1_1.fq.gz -2 RNA_seq/A315T_1_2.fq.gz --validateMappings -o A315T_1
 salmon quant -i Ensembl_hg19_salmon_index -l IU -1 RNA_seq/A315T_2_1.fq.gz -2 RNA_seq/A315T_2_2.fq.gz --validateMappings -o A315T_2
-python miniconda2/pkgs/suppa-2.3-py36_1/bin/multipleFieldSelection.py -i pCDH_1/quant.sf -k 1 -f 4 -o pCDH_1.txt
-python miniconda2/pkgs/suppa-2.3-py36_1/bin/multipleFieldSelection.py -i pCDH_2/quant.sf -k 1 -f 4 -o pCDH_2.txt
-python miniconda2/pkgs/suppa-2.3-py36_1/bin/multipleFieldSelection.py -i A315T_1/quant.sf -k 1 -f 4 -o A315T_1.txt
-python miniconda2/pkgs/suppa-2.3-py36_1/bin/multipleFieldSelection.py -i A315T_2/quant.sf -k 1 -f 4 -o A315T_2.txt
+
+python miniconda2/pkgs/suppa-2.3-py36_1/bin/multipleFieldSelection.py \
+             -i pCDH_1/quant.sf pCDH_2/quant.sf A315T_1/quant.sf A315T_2/quant.sf \
+             -k 1 -f 4 -o iso_tpm.txt
 
 -----------####### Event calculation
 python miniconda2/pkgs/suppa-2.3-py36_1/bin/suppa.py generateEvents \
        -i Reference/Salmon/Homo_sapiens.GRCh37.75.formatted.gtf -o ensembl_hg19.events -e SE SS MX RI FL -f ioe
+
 awk '
     FNR==1 && NR!=1 { while (/^<header>/) getline; }
     1 {print}
 ' *.ioe > ensembl_hg19.events.ioe
-
-Rscript format_Ensembl_ids.R pCDH_1.txt
-
-
-
-
-python miniconda2/pkgs/suppa-2.3-py36_1/bin/suppa.py psiPerEvent -i ensembl_hg19.events.ioe -e pCDH_1.txt -o pCDH_1_events
 
 
 
