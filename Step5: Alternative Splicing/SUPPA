@@ -5,11 +5,11 @@ conda install -c bioconda suppa
 conda install -c bioconda salmon
 
 -----------####### Transcript quantification
-salmon index --gencode -t Reference/Fasta/gencode.v31lift37.transcripts.fa -i hg19_salmon_index
-salmon quant -i hg19_salmon_index -l IU -1 RNA_seq/pCDH_1_1.fq.gz -2 RNA_seq/pCDH_1_2.fq.gz --validateMappings -o pCDH_1
-salmon quant -i hg19_salmon_index -l IU -1 RNA_seq/pCDH_2_1.fq.gz -2 RNA_seq/pCDH_2_2.fq.gz --validateMappings -o pCDH_2
-salmon quant -i hg19_salmon_index -l IU -1 RNA_seq/A315T_1_1.fq.gz -2 RNA_seq/A315T_1_2.fq.gz --validateMappings -o A315T_1
-salmon quant -i hg19_salmon_index -l IU -1 RNA_seq/A315T_2_1.fq.gz -2 RNA_seq/A315T_2_2.fq.gz --validateMappings -o A315T_2
+salmon index --gencode -t Reference/Salmon/hg19_EnsenmblGenes_sequence_ensenmbl.fasta -i Ensembl_hg19_salmon_index
+salmon quant -i Ensembl_hg19_salmon_index -l IU -1 RNA_seq/pCDH_1_1.fq.gz -2 RNA_seq/pCDH_1_2.fq.gz --validateMappings -o pCDH_1
+salmon quant -i Ensembl_hg19_salmon_index -l IU -1 RNA_seq/pCDH_2_1.fq.gz -2 RNA_seq/pCDH_2_2.fq.gz --validateMappings -o pCDH_2
+salmon quant -i Ensembl_hg19_salmon_index -l IU -1 RNA_seq/A315T_1_1.fq.gz -2 RNA_seq/A315T_1_2.fq.gz --validateMappings -o A315T_1
+salmon quant -i Ensembl_hg19_salmon_index -l IU -1 RNA_seq/A315T_2_1.fq.gz -2 RNA_seq/A315T_2_2.fq.gz --validateMappings -o A315T_2
 python miniconda2/pkgs/suppa-2.3-py36_1/bin/multipleFieldSelection.py -i pCDH_1/quant.sf -k 1 -f 4 -o pCDH_1.txt
 python miniconda2/pkgs/suppa-2.3-py36_1/bin/multipleFieldSelection.py -i pCDH_2/quant.sf -k 1 -f 4 -o pCDH_2.txt
 python miniconda2/pkgs/suppa-2.3-py36_1/bin/multipleFieldSelection.py -i A315T_1/quant.sf -k 1 -f 4 -o A315T_1.txt
