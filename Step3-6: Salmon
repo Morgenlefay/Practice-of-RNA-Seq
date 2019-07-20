@@ -1,0 +1,6 @@
+-----------###### Environment
+conda create -n SUPPA
+conda activate SUPPA
+conda install -c bioconda suppa
+conda install -c bioconda salmon
+
