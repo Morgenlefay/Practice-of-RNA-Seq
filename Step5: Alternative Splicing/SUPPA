@@ -6,3 +6,8 @@ conda install -c bioconda salmon
 
 -----------####### Transcript quantification
 salmon index --gencode -t Reference/Fasta/gencode.v31lift37.transcripts.fa -i hg19_salmon_index
+salmon quant -i hg19_salmon_index -l IU -1 RNA_seq/pCDH_1_1.fq.gz -2 RNA_seq/pCDH_1_2.fq.gz --validateMappings -o transcripts_quant
+
+
+
+
