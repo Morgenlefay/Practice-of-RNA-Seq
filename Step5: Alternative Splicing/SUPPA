@@ -1,0 +1,7 @@
+-----------####### Environment
+conda create -n SUPPA
+conda install -c bioconda suppa
+conda install -c bioconda salmon
+
+-----------####### Transcript quantification
+salmon index -t Reference/Fasta/hg19.fa -i hg19_salmon_index
