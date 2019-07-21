@@ -1,0 +1,8 @@
+-----------###### Environment
+conda create -n Kallisto
+conda activate Kallisto
+conda install -c bioconda kallisto
+
+
+-----------###### Index
+kallisto index -i Reference/Kallisto/hg19_UCSC_refMrna.idx Reference/Kallisto/hg19_UCSC_refMrna.fa
