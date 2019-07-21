@@ -1,0 +1,5 @@
+sample	condition	reps
+A315T_1	OE	1
+A315T_2	OE	2
+pCDH_1	Ctrl	1
+pCDH_2	Ctrl	2
