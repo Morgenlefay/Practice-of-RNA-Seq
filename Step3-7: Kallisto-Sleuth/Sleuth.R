@@ -22,10 +22,16 @@ t2g <- biomaRt::getBM(attributes = c("ensembl_transcript_id", "ensembl_gene_id",
                                      "external_gene_name"), mart = mart)
 t2g <- dplyr::rename(t2g, target_id = ensembl_transcript_id,
                      ens_gene = ensembl_gene_id, ext_gene = external_gene_name)
-      
 
-
-
-
-
+#读取Kallisto结果文件
+so <- sleuth_prep(s2c, ~ condition, target_mapping = t2g, extra_bootstrap_summary = TRUE)
+#使用condition设计矩阵回归
+so <- sleuth_fit(so)
+#使用截距项回归
+so <- sleuth_fit(so, ~1, 'reduced')
+#使用LRT进行鉴定
+so <- sleuth_lrt(so, 'reduced', 'full')
+# LRT检验结果
+sleuth_table <- sleuth_results(so, 'reduced:full', 'lrt', show_all = FALSE)
+sleuth_significant <- dplyr::filter(sleuth_table, qval <= 0.05)
 
