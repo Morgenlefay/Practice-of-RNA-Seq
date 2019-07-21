@@ -8,3 +8,7 @@ kallisto index -i Reference/Kallisto/hg19_UCSC_refMrna.idx Reference/Kallisto/hg
 
 -----------###### Quant
 kallisto quant -i Reference/Kallisto/hg19_UCSC_refMrna.idx -o KA/pCDH_1 -t 8 -b 100 RNA_seq/pCDH_1_1.fq.gz RNA_seq/pCDH_1_2.fq.gz
+kallisto quant -i Reference/Kallisto/hg19_UCSC_refMrna.idx -o KA/pCDH_2 -t 8 -b 100 RNA_seq/pCDH_2_1.fq.gz RNA_seq/pCDH_2_2.fq.gz
+kallisto quant -i Reference/Kallisto/hg19_UCSC_refMrna.idx -o KA/A315T_1 -t 8 -b 100 RNA_seq/A315T_1_1.fq.gz RNA_seq/A315T_1_2.fq.gz
+kallisto quant -i Reference/Kallisto/hg19_UCSC_refMrna.idx -o KA/A315T_2 -t 8 -b 100 RNA_seq/A315T_2_1.fq.gz RNA_seq/A315T_2_2.fq.gz
+
