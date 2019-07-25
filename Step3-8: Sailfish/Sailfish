@@ -1,6 +1,7 @@
 ----------###### Environment
 conda create -n Sailfish
+conda activate Sailfish
+conda install -c bioconda sailfish
 
-
-
-
+-----------###### Index
+sailfish index -p 8 -t Reference/Sailfish/Homo_sapiens.GRCh38.cds.all.fa -o Reference/Sailfish/hg38_ensembl_cds.idx
