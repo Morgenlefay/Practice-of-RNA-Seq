@@ -1,0 +1,58 @@
+--------####### Hisat2
+hisat2 -t -p 8 -x Reference/index/hg19/genome -1 RNA_seq/pCDH_1_1_val_1.fq.gz -2 RNA_seq/pCDH_1_2_val_2.fq.gz | samtools sort -@4 -O bam -o RNA_seq/pCDH_1.bam	
+hisat2 -t -p 8 -x Reference/index/hg19/genome -1 RNA_seq/pCDH_2_1_val_1.fq.gz -2 RNA_seq/pCDH_2_2_val_2.fq.gz | samtools sort -@4 -O bam -o RNA_seq/pCDH_2.bam	
+hisat2 -t -p 8 -x Reference/index/hg19/genome -1 RNA_seq/A315T_1_1_val_1.fq.gz -2 RNA_seq/A315T_1_2_val_2.fq.gz | samtools sort -@4 -O bam -o RNA_seq/A315T_1.bam	
+hisat2 -t -p 8 -x Reference/index/hg19/genome -1 RNA_seq/A315T_2_1_val_1.fq.gz -2 RNA_seq/A315T_2_2_val_2.fq.gz | samtools sort -@4 -O bam -o RNA_seq/A315T_2.bam
+hisat2 -t -p 8 -x Reference/index/hg19/genome -1 RNA_seq/Scrb_1_1_val_1.fq.gz -2 RNA_seq/Scrb_1_2_val_2.fq.gz | samtools sort -@4 -O bam -o RNA_seq/Scrb_1.bam	
+hisat2 -t -p 8 -x Reference/index/hg19/genome -1 RNA_seq/Scrb_2_1_val_1.fq.gz -2 RNA_seq/Scrb_2_2_val_2.fq.gz | samtools sort -@4 -O bam -o RNA_seq/Scrb_2.bam
+hisat2 -t -p 8 -x Reference/index/hg19/genome -1 RNA_seq/sh2_1_1_val_1.fq.gz -2 RNA_seq/sh2_1_2_val_2.fq.gz | samtools sort -@4 -O bam -o RNA_seq/sh2_1.bam	
+hisat2 -t -p 8 -x Reference/index/hg19/genome -1 RNA_seq/sh2_2_1_val_1.fq.gz -2 RNA_seq/sh2_2_2_val_2.fq.gz | samtools sort -@4 -O bam -o RNA_seq/sh2_2.bam
+hisat2 -t -p 8 -x Reference/index/hg19/genome -1 RNA_seq/sh8_1_1_val_1.fq.gz -2 RNA_seq/sh8_1_2_val_2.fq.gz | samtools sort -@4 -O bam -o RNA_seq/sh8_1.bam	
+hisat2 -t -p 8 -x Reference/index/hg19/genome -1 RNA_seq/sh8_2_1_val_1.fq.gz -2 RNA_seq/sh8_2_2_val_2.fq.gz | samtools sort -@4 -O bam -o RNA_seq/sh8_2.bam
+
+--------####### Stringtie
+## assembly
+stringtie RNA_seq/pCDH_1.bam -l pCDH_1 -p 8 -G Reference/GTF/gencode.v19.annotation.gtf -o RNA_seq/Assembly/pCDH_1.gtf
+stringtie RNA_seq/pCDH_2.bam -l pCDH_2 -p 8 -G Reference/GTF/gencode.v19.annotation.gtf -o RNA_seq/Assembly/pCDH_2.gtf
+stringtie RNA_seq/A315T_1.bam -l A315T_1 -p 8 -G Reference/GTF/gencode.v19.annotation.gtf -o RNA_seq/Assembly/A315T_1.gtf
+stringtie RNA_seq/A315T_2.bam -l A315T_2 -p 8 -G Reference/GTF/gencode.v19.annotation.gtf -o RNA_seq/Assembly/A315T_2.gtf
+stringtie RNA_seq/Scrb_1.bam -l Scrb_1 -p 8 -G Reference/GTF/gencode.v19.annotation.gtf -o RNA_seq/Assembly/Scrb_1.gtf
+stringtie RNA_seq/Scrb_2.bam -l Scrb_2 -p 8 -G Reference/GTF/gencode.v19.annotation.gtf -o RNA_seq/Assembly/Scrb_2.gtf
+stringtie RNA_seq/sh2_1.bam -l sh2_1 -p 8 -G Reference/GTF/gencode.v19.annotation.gtf -o RNA_seq/Assembly/sh2_1.gtf
+stringtie RNA_seq/sh2_2.bam -l sh2_2 -p 8 -G Reference/GTF/gencode.v19.annotation.gtf -o RNA_seq/Assembly/sh2_2.gtf
+stringtie RNA_seq/sh8_1.bam -l sh8_1 -p 8 -G Reference/GTF/gencode.v19.annotation.gtf -o RNA_seq/Assembly/sh8_1.gtf
+stringtie RNA_seq/sh8_2.bam -l sh8_2 -p 8 -G Reference/GTF/gencode.v19.annotation.gtf -o RNA_seq/Assembly/sh8_2.gtf
+
+## create mergelist.txt
+RNA_seq/Assembly/pCDH_1.gtf
+RNA_seq/Assembly/pCDH_2.gtf
+RNA_seq/Assembly/A315T_1.gtf
+RNA_seq/Assembly/A315T_2.gtf
+
+## merge
+stringtie --merge -p 8 -G Reference/GTF/gencode.v19.annotation.gtf -o A315T_OE_merged.gtf mergelist.txt
+
+## check out the transcripts
+cat A315T_OE_merged.gtf | head
+
+## how many transcripts
+cat A315T_OE_merged.gtf | grep -v "^#" | awk '$3=="transcript" {print}' | wc -l
+
+## compare the assembled transcripts to known transcripts
+gffcompare -r Reference/GTF/gencode.v19.annotation.gtf -G -o merged A315T_OE_merged.gtf
+cat merged.stats
+
+## estimate abundances of transcripts
+stringtie -e -B -p 8 -G A315T_OE_merged.gtf -o ballgown/pCDH_1/pCDH_1.gtf RNA_seq/pCDH_1.bam
+stringtie -e -B -p 8 -G A315T_OE_merged.gtf -o ballgown/pCDH_2/pCDH_2.gtf RNA_seq/pCDH_2.bam
+stringtie -e -B -p 8 -G A315T_OE_merged.gtf -o ballgown/A315T_1/A315T_1.gtf RNA_seq/A315T_1.bam
+stringtie -e -B -p 8 -G A315T_OE_merged.gtf -o ballgown/A315T_2/A315T_2.gtf RNA_seq/A315T_2.bam
+
+# Reads count
+wget http://ccb.jhu.edu/software/stringtie/dl/prepDE.py
+python2 ./prepDE.py - ballgown
+
+
+
+
+
