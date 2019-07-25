@@ -1,0 +1,5 @@
+sample	condition	run
+A315T_1	OE	A315T_1
+A315T_2	OE	A315T_2
+pCDH_1	Ctrl	pCDH_1
+pCDH_2	Ctrl	pCDH_2
