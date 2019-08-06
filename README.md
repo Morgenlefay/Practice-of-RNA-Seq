@@ -2,13 +2,13 @@
 
 ## Workflow of RNA-seq analysis
 
-Step1: set conda environment for RNA-seq analysis
+### Step1: set conda environment for RNA-seq analysis
 
 Quality Control: conda create -n QC
 
 RNAseq: conda create -n RNAseq
 
-Reference
+### Reference
 
 RNAcocktail(https://www.nature.com/articles/s41467-017-00050-4)
 
