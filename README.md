@@ -2,7 +2,7 @@
 
 Workflow of RNA-seq analysis
 
-Step1-
+Step1: set conda environment for RNA-seq analysis
 
 Reference
 
