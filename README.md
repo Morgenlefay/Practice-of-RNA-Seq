@@ -8,6 +8,15 @@ Quality Control: conda create -n QC
 
 RNAseq: conda create -n RNAseq
 
+### Step2: Preprocess
+
+FastQC and MultiQC of Raw data
+
+Reads trimming
+
+FastQC and MultiQC of Clean data
+
+
 ### Reference
 
 RNAcocktail(https://www.nature.com/articles/s41467-017-00050-4)
