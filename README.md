@@ -4,9 +4,9 @@
 
 Step1: set conda environment for RNA-seq analysis
 
-'conda create -n QC'
+Quality Control: '<conda create -n QC>'
 
-'conda create -n RNAseq'
+RNAseq:'<conda create -n RNAseq>'
 
 Reference
 
