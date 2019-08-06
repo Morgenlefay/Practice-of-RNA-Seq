@@ -1,5 +1,5 @@
-# RNA-seq
-Practice of RNA-seq analysis
+# Practice of RNA-seq analysis
+
 
 Reference
 
