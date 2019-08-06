@@ -12,9 +12,12 @@ RNAseq: conda create -n RNAseq
 
 FastQC and MultiQC of Raw data
 
-Reads trimming
+Reads trimming by Trim_galore
 
 FastQC and MultiQC of Clean data
+
+### Step3
+
 
 
 ### Reference
